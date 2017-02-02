@@ -1,0 +1,9 @@
+c:\users\dpleava\documents\visual studio 2015\Projects\IssDownloader\IssDownloader\bin\Debug\IssDownloader.exe.config
+c:\users\dpleava\documents\visual studio 2015\Projects\IssDownloader\IssDownloader\bin\Debug\IssDownloader.exe
+c:\users\dpleava\documents\visual studio 2015\Projects\IssDownloader\IssDownloader\bin\Debug\IssDownloader.pdb
+c:\users\dpleava\documents\visual studio 2015\Projects\IssDownloader\IssDownloader\bin\Debug\Frapper.dll
+c:\users\dpleava\documents\visual studio 2015\Projects\IssDownloader\IssDownloader\obj\Debug\IssDownloader.csprojResolveAssemblyReference.cache
+c:\users\dpleava\documents\visual studio 2015\Projects\IssDownloader\IssDownloader\obj\Debug\IssDownloader.exe
+c:\users\dpleava\documents\visual studio 2015\Projects\IssDownloader\IssDownloader\obj\Debug\IssDownloader.pdb
+C:\Users\DPLEAVA\Documents\Visual Studio 2015\Projects\IssDownloader\IssDownloader\bin\Debug\Newtonsoft.Json.dll
+C:\Users\DPLEAVA\Documents\Visual Studio 2015\Projects\IssDownloader\IssDownloader\bin\Debug\Newtonsoft.Json.xml
