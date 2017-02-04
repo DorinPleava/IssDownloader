@@ -33,8 +33,8 @@ namespace IssDownloader
     {
         static void Main(string[] args)
         {
-            var videoId = "ddFvjfvPnqk";
-
+            //var videoId = "ddFvjfvPnqk";
+            var videoId = "qzMQza8xZCc";
 
             string html = string.Empty;
             string url = @"http://pwn.sh/tools/streamapi.py?url=https://www.youtube.com/watch?v=";
@@ -58,7 +58,6 @@ namespace IssDownloader
                 html = reader.ReadToEnd();
             }
 
-
             RootObject deserializedJson = JsonConvert.DeserializeObject<RootObject>(html);
 
             Console.WriteLine(deserializedJson.urls.Url440p);
@@ -75,7 +74,7 @@ namespace IssDownloader
             //    StartInfo = new ProcessStartInfo
             //    {
             //        FileName = "ffmpeg.exe",
-            //        Arguments = "-i "+ m3U8UrlToDownload + " -c copy -t 00:00:20 output.mp4",
+            //        Arguments = "-i " + m3U8UrlToDownload + " -c copy -t 00:00:20 output.mp4",
             //        UseShellExecute = false,
             //        RedirectStandardOutput = true,
             //        CreateNoWindow = true
@@ -91,6 +90,34 @@ namespace IssDownloader
             //var exitCodeGetFirst20Seconds = procGetFirst20Seconds.ExitCode;
             //procGetFirst20Seconds.Close();
             //Console.WriteLine("All Done");
+
+
+            //get image
+
+
+            var procGetFirst20Seconds = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = "ffmpeg.exe",
+                    Arguments = "-ss 0.5 -i " + deserializedJson.urls.Url730p + " -vframes 1 -s 480x300 -f image2 imagefile.jpg",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    CreateNoWindow = true
+                }
+            };
+
+
+            procGetFirst20Seconds.Start();
+            //while (!procGetFirst20Seconds.StandardOutput.EndOfStream)
+            //{
+            //    m3U8UrlToDownload = procGetFirst20Seconds.StandardOutput.ReadLine();
+            //}
+            procGetFirst20Seconds.WaitForExit();
+            var exitCodeGetFirst20Seconds = procGetFirst20Seconds.ExitCode;
+            procGetFirst20Seconds.Close();
+            Console.WriteLine("All Done");
+
             Console.ReadKey();
         }
     }
