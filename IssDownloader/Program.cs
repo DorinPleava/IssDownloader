@@ -33,38 +33,46 @@ namespace IssDownloader
     {
         static void Main(string[] args)
         {
-            //var videoId = "ddFvjfvPnqk";
-            var videoId = "qzMQza8xZCc";
+            // NASA TV:
 
-            string html = string.Empty;
-            string url = @"http://pwn.sh/tools/streamapi.py?url=https://www.youtube.com/watch?v=";
+            // http://nasatv-lh.akamaihd.net/i/NASA_101@319270/master.m3u8
 
-            var fullVideoPath = url + videoId;
+            // Iss LIVE HD
 
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(fullVideoPath);
+            // http://iphone-streaming.ustream.tv/uhls/17074538/streams/live/iphone/playlist.m3u8
 
-            request.KeepAlive = true;
-            request.Accept = "application/json, text/javascript, */*; q=0.01";
-            request.Headers.Add("X-Requested-With", @"XMLHttpRequest");
-            request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36";
-            request.Referer = "http://pwn.sh/tools/getstream.html";
-            request.Headers.Set(HttpRequestHeader.AcceptEncoding, "gzip, deflate, sdch");
-            request.Headers.Set(HttpRequestHeader.AcceptLanguage, "en-US,en;q=0.8,ro;q=0.6");
+            ////var videoId = "ddFvjfvPnqk";
+            //var videoId = "qzMQza8xZCc";
 
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                html = reader.ReadToEnd();
-            }
+            //string html = string.Empty;
+            //string url = @"http://pwn.sh/tools/streamapi.py?url=https://www.youtube.com/watch?v=";
 
-            RootObject deserializedJson = JsonConvert.DeserializeObject<RootObject>(html);
+            //var fullVideoPath = url + videoId;
 
-            Console.WriteLine(deserializedJson.urls.Url440p);
-            Console.WriteLine(deserializedJson.urls.Url240p);
-            Console.WriteLine(deserializedJson.urls.Url360p);
-            Console.WriteLine(deserializedJson.urls.Url480p);
-            Console.WriteLine(deserializedJson.urls.Url730p);
+            //HttpWebRequest request = (HttpWebRequest)WebRequest.Create(fullVideoPath);
+
+            //request.KeepAlive = true;
+            //request.Accept = "application/json, text/javascript, */*; q=0.01";
+            //request.Headers.Add("X-Requested-With", @"XMLHttpRequest");
+            //request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36";
+            //request.Referer = "http://pwn.sh/tools/getstream.html";
+            //request.Headers.Set(HttpRequestHeader.AcceptEncoding, "gzip, deflate, sdch");
+            //request.Headers.Set(HttpRequestHeader.AcceptLanguage, "en-US,en;q=0.8,ro;q=0.6");
+
+            //using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            //using (Stream stream = response.GetResponseStream())
+            //using (StreamReader reader = new StreamReader(stream))
+            //{
+            //    html = reader.ReadToEnd();
+            //}
+
+            //RootObject deserializedJson = JsonConvert.DeserializeObject<RootObject>(html);
+
+            //Console.WriteLine(deserializedJson.urls.Url440p);
+            //Console.WriteLine(deserializedJson.urls.Url240p);
+            //Console.WriteLine(deserializedJson.urls.Url360p);
+            //Console.WriteLine(deserializedJson.urls.Url480p);
+            //Console.WriteLine(deserializedJson.urls.Url730p);
 
 
 
@@ -100,7 +108,9 @@ namespace IssDownloader
                 StartInfo = new ProcessStartInfo
                 {
                     FileName = "ffmpeg.exe",
-                    Arguments = "-ss 0.5 -i " + deserializedJson.urls.Url730p + " -vframes 1 -s 480x300 -f image2 imagefile.jpg",
+                    //Arguments = "-ss 0.5 -i " + "http://iphone-streaming.ustream.tv/uhls/17074538/streams/live/iphone/playlist.m3u8" + " -vframes 1 -s 480x300 -f image2 -y imagefile.jpg",
+                    Arguments = "-ss 0.5 -i " + "http://iphone-streaming.ustream.tv/uhls/17074538/streams/live/iphone/playlist.m3u8" + " /*-vframes 1*/ -s 480x300 -vf fps=1/60 /*-f image2*/ -y imagefile.jpg",
+              
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     CreateNoWindow = true

@@ -13,3 +13,9 @@ D:\Projects\IssDownloader\IssDownloader\obj\Debug\IssDownloader.pdb
 E:\Projects\IssDownloader\IssDownloader\bin\Debug\IssDownloader.exe.config
 E:\Projects\IssDownloader\IssDownloader\obj\Debug\IssDownloader.exe
 E:\Projects\IssDownloader\IssDownloader\obj\Debug\IssDownloader.pdb
+E:\Projects\IssDownloader\IssDownloader\bin\Debug\IssDownloader.exe
+E:\Projects\IssDownloader\IssDownloader\bin\Debug\IssDownloader.pdb
+E:\Projects\IssDownloader\IssDownloader\bin\Debug\Frapper.dll
+E:\Projects\IssDownloader\IssDownloader\bin\Debug\Newtonsoft.Json.dll
+E:\Projects\IssDownloader\IssDownloader\bin\Debug\Newtonsoft.Json.xml
+E:\Projects\IssDownloader\IssDownloader\obj\Debug\IssDownloader.csprojResolveAssemblyReference.cache

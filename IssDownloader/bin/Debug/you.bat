@@ -1,0 +1,1 @@
+ffmpeg.exe -i http://iphone-streaming.ustream.tv/uhls/17074538/streams/live/iphone/playlist.m3u8 -s 480x300 -vf fps=1/10 -y -q:v 1 -update 1 photo.jpg
