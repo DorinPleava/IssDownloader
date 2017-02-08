@@ -7,6 +7,9 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Azure; // Namespace for CloudConfigurationManager
+using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
+using Microsoft.WindowsAzure.Storage.Blob; // Namespace for Blob storage types
 
 namespace IssDownloader
 {
@@ -107,28 +110,37 @@ namespace IssDownloader
             {
                 StartInfo = new ProcessStartInfo
                 {
+                    //ffmpeg.exe -i http://iphone-streaming.ustream.tv/uhls/17074538/streams/live/iphone/playlist.m3u8 -s 480x300 -vf fps=1/10 -y -q:v 1 -update 1 photo.jpg
+
                     FileName = "ffmpeg.exe",
                     //Arguments = "-ss 0.5 -i " + "http://iphone-streaming.ustream.tv/uhls/17074538/streams/live/iphone/playlist.m3u8" + " -vframes 1 -s 480x300 -f image2 -y imagefile.jpg",
-                    Arguments = "-ss 0.5 -i " + "http://iphone-streaming.ustream.tv/uhls/17074538/streams/live/iphone/playlist.m3u8" + " /*-vframes 1*/ -s 480x300 -vf fps=1/60 /*-f image2*/ -y imagefile.jpg",
-              
+                    Arguments = " -i " + "http://iphone-streaming.ustream.tv/uhls/17074538/streams/live/iphone/playlist.m3u8" + " -s 480x300 -vf fps=1/10 -y -q:v 1 -update 1 photo.jpg",
+
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     CreateNoWindow = true
                 }
             };
+            //procGetFirst20Seconds.OutputDataReceived += new DataReceivedEventHandler(OutputHandler);
+            //procGetFirst20Seconds.ErrorDataReceived += new DataReceivedEventHandler(OutputHandler);
 
+            //procGetFirst20Seconds.OutputDataReceived += (s, e) => Console.WriteLine(e.Data);
+            //procGetFirst20Seconds.ErrorDataReceived += (s, e) => Console.WriteLine(e.Data);
 
             procGetFirst20Seconds.Start();
-            //while (!procGetFirst20Seconds.StandardOutput.EndOfStream)
-            //{
-            //    m3U8UrlToDownload = procGetFirst20Seconds.StandardOutput.ReadLine();
-            //}
+            Console.WriteLine(procGetFirst20Seconds.StandardOutput);
+
             procGetFirst20Seconds.WaitForExit();
             var exitCodeGetFirst20Seconds = procGetFirst20Seconds.ExitCode;
             procGetFirst20Seconds.Close();
             Console.WriteLine("All Done");
 
             Console.ReadKey();
+        }
+        static void OutputHandler(object sendingProcess, DataReceivedEventArgs outLine)
+        {
+            //* Do your stuff with the output (write to console/log/StringBuilder)
+            Console.WriteLine(outLine.Data);
         }
     }
 }
