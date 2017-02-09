@@ -114,7 +114,8 @@ namespace IssDownloader
 
                     FileName = "ffmpeg.exe",
                     //Arguments = "-ss 0.5 -i " + "http://iphone-streaming.ustream.tv/uhls/17074538/streams/live/iphone/playlist.m3u8" + " -vframes 1 -s 480x300 -f image2 -y imagefile.jpg",
-                    Arguments = " -i " + "http://iphone-streaming.ustream.tv/uhls/17074538/streams/live/iphone/playlist.m3u8" + " -s 480x300 -vf fps=1/10 -y -q:v 1 -update 1 photo.jpg",
+                    //Arguments = " -i " + "http://iphone-streaming.ustream.tv/uhls/17074538/streams/live/iphone/playlist.m3u8" + " -s 480x300 -vf fps=1/10 -y -q:v 1 -update 1 photo.jpg",
+                    Arguments = "-ss 0 -i " + "http://iphone-streaming.ustream.tv/uhls/17074538/streams/live/iphone/playlist.m3u8" + " - t 60 -y out.mov",
 
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
